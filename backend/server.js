@@ -31,7 +31,7 @@ db.connect(err => {
 // Routes
 
 // Add new patient
-app.post('/patients', (req, res) => {
+app.post('/api/patients', (req, res) => {
   const { name, age, height } = req.body;
   const query = 'INSERT INTO patients (name, age, height) VALUES (?, ?, ?)';
   db.query(query, [name, age, height], (err, result) => {
@@ -41,7 +41,7 @@ app.post('/patients', (req, res) => {
 });
 
 // Add visit for a patient
-app.post('/visits', (req, res) => {
+app.post('/api/visits', (req, res) => {
   const { patient_id, visit_date, observations } = req.body;
   const query = 'INSERT INTO visits (patient_id, visit_date, observations) VALUES (?, ?, ?)';
   db.query(query, [patient_id, visit_date, observations], (err, result) => {
@@ -51,7 +51,7 @@ app.post('/visits', (req, res) => {
 });
 
 // Get all patients with visits
-app.get('/patients', (req, res) => {
+app.get('/api/patients', (req, res) => {
   const query = `
     SELECT p.id, p.name, p.age, p.height, v.visit_date, v.observations
     FROM patients p
@@ -65,4 +65,10 @@ app.get('/patients', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+if (require.main === module) {
+  app.listen(5000, () => {
+    console.log("Server running on port 5000");
+  });
+}
+
+module.exports = app;
