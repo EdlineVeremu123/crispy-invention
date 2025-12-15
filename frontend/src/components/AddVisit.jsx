@@ -12,10 +12,10 @@ export default function AddVisit({ patients, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form-container" onSubmit={handleSubmit}>
       <h2>Add Visit</h2>
-      <div>
-        <label>Patient:</label>
+      <div className="form-group">
+        <label>Patient</label>
         <select value={patient_id} onChange={e => setPatientId(e.target.value)} required>
           <option value="">Select patient</option>
           {patients.map(p => (
@@ -23,15 +23,15 @@ export default function AddVisit({ patients, onSubmit }) {
           ))}
         </select>
       </div>
-      <div>
-        <label>Date:</label>
+      <div className="form-group">
+        <label>Date</label>
         <input type="date" value={visit_date} onChange={e => setVisitDate(e.target.value)} required />
       </div>
-      <div>
-        <label>Observations:</label>
+      <div className="form-group">
+        <label>Observations</label>
         <textarea value={observations} onChange={e => setObservations(e.target.value)} required />
       </div>
-      <button type="submit">Add Visit</button>
+      <button className="btn btn-primary" type="submit">Add Visit</button>
     </form>
   );
 }

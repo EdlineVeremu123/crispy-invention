@@ -12,21 +12,21 @@ export default function AddPatient({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form-container" onSubmit={handleSubmit}>
       <h2>Add Patient</h2>
-      <div>
-        <label>Name:</label>
+      <div className="form-group">
+        <label>Name</label>
         <input value={name} onChange={e => setName(e.target.value)} required />
       </div>
-      <div>
-        <label>Age:</label>
+      <div className="form-group">
+        <label>Age</label>
         <input type="number" value={age} onChange={e => setAge(e.target.value)} required />
       </div>
-      <div>
-        <label>Height:</label>
+      <div className="form-group">
+        <label>Height (cm)</label>
         <input type="number" step="0.1" value={height} onChange={e => setHeight(e.target.value)} required />
       </div>
-      <button type="submit">Add Patient</button>
+      <button className="btn btn-primary" type="submit">Add Patient</button>
     </form>
   );
 }

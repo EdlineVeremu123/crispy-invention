@@ -53,16 +53,19 @@ export default function App() {
   };
 
   return (
-    <div>
-      <header><h1>Clinic Management System</h1></header>
-      <nav>
-      <button onClick={() => setCurrentView('patients')}>View Patients</button>
-      <button onClick={() => setCurrentView('add-patient')}>Add Patient</button>
-      <button onClick={() => setCurrentView('add-visit')}>Add Visit</button>
+    <div className="app">
+      <header className="header">
+        <h1>Clinic Management System</h1>
+        <p>Manage patients and visits in one place</p>
+      </header>
+      <nav className="nav">
+        <button className={currentView === 'patients' ? 'active' : ''} onClick={() => setCurrentView('patients')}>View Patients</button>
+        <button className={currentView === 'add-patient' ? 'active' : ''} onClick={() => setCurrentView('add-patient')}>Add Patient</button>
+        <button className={currentView === 'add-visit' ? 'active' : ''} onClick={() => setCurrentView('add-visit')}>Add Visit</button>
       </nav>
 
-      {error && <p style={{color:'red'}}>{error}</p>}
-      {successMessage && <p style={{color:'green'}}>{successMessage}</p>}
+      {error && <p className="error">Error: {error}</p>}
+      {successMessage && <p className="success">{successMessage}</p>}
       <main>{renderView()}</main>
     </div>
   );
