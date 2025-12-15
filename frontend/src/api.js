@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+// Use VITE_API_BASE in production (Railway/Vercel), fall back to /api for local dev
 const api = axios.create({
-  baseURL: '/api',  // Vite proxy forwards to backend
+  baseURL: import.meta.env.VITE_API_BASE || '/api',
   headers: { 'Content-Type': 'application/json' }
 });
 
